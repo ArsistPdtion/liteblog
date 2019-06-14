@@ -11,4 +11,11 @@ func init() {
     	&controllers.IndexController{},
     	&controllers.UserController{},
     	)
+
+    beego.AddNamespace(
+    	beego.NewNamespace(
+    		"note",
+    		beego.NSInclude(&controllers.NoteController{}),
+    		),
+    	)
 }
