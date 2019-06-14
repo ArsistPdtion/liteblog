@@ -157,6 +157,36 @@ layui.define(['element', 'form','laypage','jquery','laytpl'],function(exports){
   }
   // end 图片遮罩
 
+  //login
+  form.on('submit(login)', function (fromdata) {
+    sysn.post("/login", fromdata.field)
+        .success(function (data) {
+            layer.msg(data.msg);
+            if(data.action){
+              setTimeout(function () {
+                  window.location.href = data.action;
+              }, 300)
+            }
+        }).run();
+    return false;
+  });
+
+  //register
+  form.on('submit(reg)', function (fromdata) {
+      sysn.post("/reg", fromdata.field)
+          .success(function (data) {
+              layer.msg(data.msg);
+              if(data.action){
+                setTimeout(function () {
+                    window.location.href = data.action
+                }, 300)
+              }
+          }).run()
+    return false
+  });
+    
+
+
 
   //输出test接口
   exports('blog', {}); 
